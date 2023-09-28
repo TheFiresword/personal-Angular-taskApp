@@ -1,0 +1,31 @@
+<h2>Ajouter une tâche</h2>
+<div class="task-form">
+    <form [formGroup]="the_task_form" (ngSubmit)="onFormSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Titre</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="the_task_form.controls['title'].hasError('required')">
+          Un titre est <strong>requis</strong>
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Deadline</mat-label>
+          <input matInput [matDatepicker]="picker" [min]="today" formControlName="deadline">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="bottom-buttons">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!show_button">Valider</button>
+      <button mat-raised-button color="primary" routerLink="">Retour à la liste</button>
+      </div>
+      
+    </form>
+</div>
+  

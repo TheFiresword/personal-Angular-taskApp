@@ -1,0 +1,49 @@
+<div class="card-container" *ngIf="!error_msg" style="width: 500px">
+    <form [formGroup]="the_task_form" (ngSubmit)="onSubmitChanges()">
+        <div>
+            <mat-form-field appearance="outline">
+                <input matInput formControlName="title">
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field class="date-container" appearance="outline">
+                <input matInput [matDatepicker]="picker" [min]="date_to_display" formControlName="deadline">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline">
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+        
+
+        <div class="timestamp-buttons">
+            <button mat-button disabled style="color: rgb(194, 61, 235)">Créee le: {{task.created_at | date: 'dd MMM yyyy'}}</button>
+            <button mat-button disabled style="color: rgb(244, 140, 76)">Modifiée le: {{task.updated_at | date:'dd MMM yyyy'}}</button>
+        </div>
+        <div class="changes-button" *ngIf="is_changed">
+            <button mat-raised-button type="submit">
+                Valider les modifications
+            </button>
+        </div>
+    </form>
+
+    <button mat-raised-button (click)="goBackToList()" class="back-button" style="background-color:rgb(208, 208, 240)">
+        Retour à la liste de tâches
+    </button>
+</div>
+  
+<div *ngIf="error_msg">
+    <mat-card>
+        <mat-card-content>Erreur : {{error_msg}}</mat-card-content>
+    </mat-card>
+    <button mat-raised-button (click)="goBackToList()" class="back-button" style="background-color:rgb(208, 208, 240)">
+        Retour à la liste de tâches
+    </button>
+</div>
+    
+

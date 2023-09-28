@@ -1,0 +1,20 @@
+<div class="task-list-container">
+    <h1>Vos tâches</h1>
+    <div class="task-list">
+      <div *ngFor="let task of indexed_tasks" class="task-item">
+        <div class="task-title" (click)="openTaskDetails(task.id)">{{task.index + 1}}. {{task.title}}</div>
+        <div class="task-remove">
+          <button type="button" [ngStyle]="{'border': '0'}" 
+          (click)="openConfirmDialog(task.id, task.index, '1000ms', '500ms')">
+            <mat-icon color="warn">clear</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="submit-button">
+      <a [routerLink]="['/form']">
+        <button type="button" mat-raised-button color="primary" [ngStyle]="{'margin': '20px'}">Ajouter une tâche</button>
+      </a>
+    </div>
+</div>
+  

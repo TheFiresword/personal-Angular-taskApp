@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+    <p>Etes vous sûr(e) de vouloir supprimer cette tâche ?</p>
+</div>
+<div mat-dialog-actions>
+    <div class="confirm-button" >
+      <button mat-button mat-dialog-close [ngStyle]="{'color': '#f50710', 'border': '0'}">
+        <mat-icon >clear</mat-icon>
+      </button>
+    </div>
+    <div class="confirm-button">
+      <button mat-button mat-dialog-close="Yes" [ngStyle]="{'color': '#063a28', 'border': '0'}">
+        <mat-icon >done</mat-icon>
+      </button>
+    </div>
+</div>
